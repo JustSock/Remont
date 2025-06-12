@@ -17,18 +17,14 @@ class Master(models.Model):
         return self.name
 
 class Review(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название")
-    image = models.ImageField(
-        upload_to='products/',
-        blank=True,          
-        null=True,
-        verbose_name="Фото"
-    )
-    text = models.CharField(max_length=100, verbose_name="Текст")
+    name = models.CharField(max_length=100, verbose_name="Имя")    
+    text = models.CharField(max_length=1000, verbose_name="Текст")
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="Телефон")
+    email = models.EmailField(max_length=255, blank=True, null=True, validators=[EmailValidator()], verbose_name="Email")
     
     class Meta:
-        verbose_name = "Товар"
-        verbose_name_plural = "Товары"
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
         
     def __str__(self):
         return self.name
