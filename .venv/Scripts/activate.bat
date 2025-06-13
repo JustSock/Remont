@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\JustSock\Desktop\Папка, честно\Дз\WebDZ2\Проект\.venv
+set VIRTUAL_ENV=D:\Unity Pet Projects\Remont\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 

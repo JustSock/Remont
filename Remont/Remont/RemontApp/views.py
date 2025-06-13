@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from .models import Master, Review, Gallery, Order
 from .serializers import MasterSerializer, ReviewSerializer, GallerySerializer, OrderSerializer
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -26,6 +28,18 @@ class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
     http_method_names = ['post']  # Разрешаем только POST запросы
+
+class UserInfoView(APIView):
+    permission_classes = [IsAuthenticated]  # доступ только с токеном
+
+    def get(self, request):
+        user = request.user  # ← автоматически берётся из токена
+        return Response({
+            'username': user.username,
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+        })
 
 
 def signup(request):

@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from django.contrib.auth import views as auth_views
 from RemontApp import views
+from RemontApp.views import UserInfoView
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +30,8 @@ urlpatterns = [
     #path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup'),
+    path('api/token/', obtain_auth_token),
+     path('api/me/', UserInfoView.as_view(), name='user-info'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
