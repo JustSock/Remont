@@ -13,7 +13,15 @@ const Gallery = (props: IProps) => {
         <Row className="d-flex justify-content-center">
           {props.gallery.map((item) => (
             <Col className="d-flex justify-content-center " xs={4} key={item.id}>
-              <Image style={{ width: '100%' }} src={item.image} rounded />
+              <Image style={{ 
+                width: '100%',
+                transition: 'transform 0.3s ease',
+                cursor: 'pointer',
+                transform: 'scale(1)',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                src={item.image} rounded />
             </Col>
           ))}
         </Row>

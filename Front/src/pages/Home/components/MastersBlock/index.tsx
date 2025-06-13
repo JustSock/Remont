@@ -13,7 +13,13 @@ const MastersBlock = (props: IProps) => {
         <Row xs={1} md={4} className="g-4">
           {props.masters.map((item) => (
             <Col key={item.id}>
-              <Card style={{ borderTopLeftRadius: '20px', borderTopRightRadius: '20px' }}>
+              <Card style={{ borderTopLeftRadius: '20px', borderTopRightRadius: '20px',
+                transition: 'transform 0.3s ease',
+                cursor: 'pointer',
+                transform: 'scale(1)',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <Card.Img variant="top" src={item.image} />
                 <Card.Body>
                   <Card.Title>{item.name}</Card.Title>
